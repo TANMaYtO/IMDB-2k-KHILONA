@@ -6,3 +6,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 
 nltk.download('movie_reviews')
+
+data = [
+    (list(movie_reviews.words(fileid)), category)
+    for category in movie_reviews.categories()
+    for fileid in movie_reviews.fileids(category)
+]
