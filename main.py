@@ -12,3 +12,7 @@ data = [
     for category in movie_reviews.categories()
     for fileid in movie_reviews.fileids(category)
 ]
+
+with open('data.txt', 'w') as f:
+    f.write(str(data))
+    f.close
