@@ -4,6 +4,7 @@ import random
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
+import joblib
 
 nltk.download('movie_reviews')
 
@@ -44,3 +45,6 @@ rep = classification_report(y_test, y_pred)
 
 print(f'accuracy: {acc:.4f}')
 print(f'classification: \n{rep}')
+
+joblib.dump(model, 'are_bisi_model_bann_gaya.pkl')
+joblib.dump(vec, 'are_bisi_tokens.pkl')
