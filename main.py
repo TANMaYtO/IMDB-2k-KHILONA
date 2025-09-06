@@ -28,7 +28,14 @@ vec = TfidfVectorizer(max_features=10000)
 x_train_vec = vec.fit_transform(x_train)
 x_test_vec = vec.transform(x_test)
 
-model = LogisticRegression()
+model = LogisticRegression(
+    C=5,                  # weaker regularization (can improve performance)
+    penalty="l2",         # default, but explicit
+    solver="liblinear",   # good for sparse, small datasets
+    class_weight=None,    # or "balanced" if imbalance
+    max_iter=2000,        # ensure convergence
+    random_state=42
+)
 model.fit(x_train_vec, y_train)
 
 y_pred= model.predict(x_test_vec)
